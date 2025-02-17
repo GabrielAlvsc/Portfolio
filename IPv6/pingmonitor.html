@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <title>RTT Monitor</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 1px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 1px;
+            text-align: left;
+        }
+        .colorido{
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mb-1">
+        <h2>RTT Monitor</h2>
+        <button type="button" id="bstart" onclick="start();" class="btn btn-success">Start</button>
+        <button type="button" id="bstop" onclick="stop();" class="btn btn-danger">Stop</button>
+    </div>
+
+    <div class="container mb-6">
+        <table id="rttTable">
+            <thead>
+                <tr>
+                    <th>Begin</th>
+                    <th>Last</th>
+                    <th>IPv4</th>
+                    <th>RTT (ms)</th>
+                    <th>IPv6</th>
+                    <th>RTT (ms)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script>
+        let requestCounter = 1;
+        const btstop = document.getElementById('bstop');
+        const btstart = document.getElementById('bstart');
+        const tableBody = document.querySelector('#rttTable tbody');
+        btstart.disabled = false;
+        btstop.disabled = true;
+        async function get_ip(url, controller) {
+            const startTime = new Date().getTime();
+            let ip = "failed";
+            let rtt = "failed";
+            const timeout = 1000;
+            try {
+                const controller = new AbortController();
+                const id = setTimeout(() => controller.abort(), timeout);
+                const response = await fetch(url, { signal: controller.signal });
+                clearTimeout(id);
+
+                const data = await response.json();
+
+                const endTime = new Date().getTime();
+                ip = data.ip;
+                rtt = endTime - startTime;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+            return [ip, rtt];
+        }
+        function stop() {
+            run = false;
+            btstop.disabled = true;
+            btstart.disabled = false;
+        }
+        function start() {
+            run = true;
+            btstop.disabled = false;
+            btstart.disabled = true;
+            fetchData();
+        }
+        async function fetchData() {
+            // Perform a GET request to the /get_ip route
+            let [ipv4, rtt4] = await get_ip('http://201.48.114.68/get_ip');
+            let [ipv6, rtt6] = await get_ip('http://[2001:1290:0:29::4040:8]/get_ip');
+            updateTable(requestCounter, ipv4, rtt4, ipv6, rtt6);
+            requestCounter++;
+            if (run) {
+                setTimeout(fetchData, 2000);
+            }
+        }
+
+        function updateTable(requestNumber, ipv4, rtt4, ipv6, rtt6) {
+            let newRow;
+            if (ipv6.includes(':')) {
+                const octetos = ipv6.split(':');
+                if (octetos.length == 8) {
+                    const block = octetos.slice(0, 4).join(':');
+                    ipv6 = `<span class="colorido">${octetos.slice(0, 4).join(":")}</span>:${octetos.slice(4).join(":")}`
+                }
+            }
+            let all = ipv4 + ipv6;
+            let cellRequest;
+            let cell_hour;
+            let cellIPv4;
+            let cellRTT4;
+            let cellIPv6;
+            let cellRTT6;
+            if (tableBody.rows.length === 0) {
+                newRow = tableBody.insertRow();
+                cellRequest = newRow.insertCell(0);
+                cell_hour = newRow.insertCell(1);
+                cellIPv4 = newRow.insertCell(2);
+                cellRTT4 = newRow.insertCell(3);
+                cellIPv6 = newRow.insertCell(4);
+                cellRTT6 = newRow.insertCell(5);
+                const now = new Date();
+                cellRequest.textContent = now.toLocaleTimeString();
+            } else {
+                newRow = tableBody.rows[tableBody.rows.length - 1];
+                cellRequest = newRow.cells[0];
+                cell_hour = newRow.cells[1];
+                cellIPv4 = newRow.cells[2]
+                cellRTT4 = newRow.cells[3]
+                cellIPv6 = newRow.cells[4]
+                cellRTT6 = newRow.cells[5];
+
+                let ip4 = cellIPv4.textContent;
+                let r4 = cellRTT4.textContent;
+                let ip6 = cellIPv6.innerHTML;
+                let r6 = cellRTT6.textContent;
+                let mall = ip4 + ip6;
+                if (all === mall) {
+                    if (rtt4 !== 'failed') {
+                        rtt4 = parseInt((parseInt(rtt4) + parseInt(r4)) / 2);
+                    }
+                    if (rtt6 !== 'failed') {
+                        rtt6 = parseInt((parseInt(rtt6) + parseInt(r6)) / 2);
+                    }
+                } else {
+                    newRow = tableBody.insertRow();
+                    cellRequest = newRow.insertCell(0);
+                    cell_hour = newRow.insertCell(1);
+                    cellIPv4 = newRow.insertCell(2);
+                    cellRTT4 = newRow.insertCell(3);
+                    cellIPv6 = newRow.insertCell(4);
+                    cellRTT6 = newRow.insertCell(5);
+                    const now = new Date();
+                    cellRequest.textContent = now.toLocaleTimeString();
+                }
+            }
+
+            // cellRequest.textContent = requestNumber;
+            const now = new Date();
+            cell_hour.textContent = now.toLocaleTimeString();
+            cellIPv4.textContent = ipv4;
+            cellRTT4.textContent = rtt4;
+            cellIPv6.innerHTML = ipv6;
+            cellRTT6.textContent = rtt6;
+        }
+    </script>
+
+</body>
+
+</html>
