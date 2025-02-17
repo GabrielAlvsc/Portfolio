@@ -1,0 +1,189 @@
+Sétupla de de entrada (Q,Ein,Efita,ft(),q0,qaceita,qrejeita): 
+{
+    "estados": [
+        "q0",
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+    ],
+    "alfa_in": [
+        "a",
+        "b",
+        "c"
+    ],
+    "alfa_fita": [
+        "a",
+        "b",
+        "c",
+        "x",
+        "y",
+        "z",
+        "_"
+    ],
+    "ftrans": {
+        "q0,a": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q1,a": {
+            "write": "a",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q1,b": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q2,b": {
+            "write": "b",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q2,c": {
+            "write": "z",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q3,b": {
+            "write": "b",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q3,y": {
+            "write": "y",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q3,a": {
+            "write": "a",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q3,x": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q0"
+        },
+        "q1,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q2,z": {
+            "write": "z",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q3,z": {
+            "write": "z",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q0,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q4"
+        },
+        "q4,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q4"
+        },
+        "q4,z": {
+            "write": "z",
+            "move": 1,
+            "newstate": "q4"
+        },
+        "q4,_": {
+            "write": "_",
+            "move": 1,
+            "newstate": "q5"
+        }
+    },
+    "init": "q0",
+    "accept": "q5",
+    "reject": []
+}
+Cadeia de entrada: aabbcc
+
+fita inicial:
+ ['a', 'a', 'b', 'b', 'c', 'c', '_', '_', '_']
+
+t(q0,a) -> (q1,x,1)
+fita: ['x', 'a', 'b', 'b', 'c', 'c', '_', '_', '_'], cabeca: 1
+
+t(q1,a) -> (q1,a,1)
+fita: ['x', 'a', 'b', 'b', 'c', 'c', '_', '_', '_'], cabeca: 2
+
+t(q1,b) -> (q2,y,1)
+fita: ['x', 'a', 'y', 'b', 'c', 'c', '_', '_', '_'], cabeca: 3
+
+t(q2,b) -> (q2,b,1)
+fita: ['x', 'a', 'y', 'b', 'c', 'c', '_', '_', '_'], cabeca: 4
+
+t(q2,c) -> (q3,z,-1)
+fita: ['x', 'a', 'y', 'b', 'z', 'c', '_', '_', '_'], cabeca: 3
+
+t(q3,b) -> (q3,b,-1)
+fita: ['x', 'a', 'y', 'b', 'z', 'c', '_', '_', '_'], cabeca: 2
+
+t(q3,y) -> (q3,y,-1)
+fita: ['x', 'a', 'y', 'b', 'z', 'c', '_', '_', '_'], cabeca: 1
+
+t(q3,a) -> (q3,a,-1)
+fita: ['x', 'a', 'y', 'b', 'z', 'c', '_', '_', '_'], cabeca: 0
+
+t(q3,x) -> (q0,x,1)
+fita: ['x', 'a', 'y', 'b', 'z', 'c', '_', '_', '_'], cabeca: 1
+
+t(q0,a) -> (q1,x,1)
+fita: ['x', 'x', 'y', 'b', 'z', 'c', '_', '_', '_'], cabeca: 2
+
+t(q1,y) -> (q1,y,1)
+fita: ['x', 'x', 'y', 'b', 'z', 'c', '_', '_', '_'], cabeca: 3
+
+t(q1,b) -> (q2,y,1)
+fita: ['x', 'x', 'y', 'y', 'z', 'c', '_', '_', '_'], cabeca: 4
+
+t(q2,z) -> (q2,z,1)
+fita: ['x', 'x', 'y', 'y', 'z', 'c', '_', '_', '_'], cabeca: 5
+
+t(q2,c) -> (q3,z,-1)
+fita: ['x', 'x', 'y', 'y', 'z', 'z', '_', '_', '_'], cabeca: 4
+
+t(q3,z) -> (q3,z,-1)
+fita: ['x', 'x', 'y', 'y', 'z', 'z', '_', '_', '_'], cabeca: 3
+
+t(q3,y) -> (q3,y,-1)
+fita: ['x', 'x', 'y', 'y', 'z', 'z', '_', '_', '_'], cabeca: 2
+
+t(q3,y) -> (q3,y,-1)
+fita: ['x', 'x', 'y', 'y', 'z', 'z', '_', '_', '_'], cabeca: 1
+
+t(q3,x) -> (q0,x,1)
+fita: ['x', 'x', 'y', 'y', 'z', 'z', '_', '_', '_'], cabeca: 2
+
+t(q0,y) -> (q4,y,1)
+fita: ['x', 'x', 'y', 'y', 'z', 'z', '_', '_', '_'], cabeca: 3
+
+t(q4,y) -> (q4,y,1)
+fita: ['x', 'x', 'y', 'y', 'z', 'z', '_', '_', '_'], cabeca: 4
+
+t(q4,z) -> (q4,z,1)
+fita: ['x', 'x', 'y', 'y', 'z', 'z', '_', '_', '_'], cabeca: 5
+
+t(q4,z) -> (q4,z,1)
+fita: ['x', 'x', 'y', 'y', 'z', 'z', '_', '_', '_'], cabeca: 6
+
+t(q4,_) -> (q5,_,1)
+fita: ['x', 'x', 'y', 'y', 'z', 'z', '_', '_', '_'], cabeca: 7
+
+A MT aceita a cadeia aabbcc Estado: q5
+
+fita final:
+ ['x', 'x', 'y', 'y', 'z', 'z', '_', '_', '_']
+

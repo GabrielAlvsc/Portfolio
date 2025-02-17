@@ -1,0 +1,100 @@
+{
+    "estados": [
+        "q0",
+        "q1",
+        "q2",
+        "q3",
+        "qa"
+    ],
+    "alfa_in": [
+        "0",
+        "1"
+    ],
+    "alfa_fita": [
+        "_",
+        "0",
+        "1",
+        "x",
+        "y"
+    ],
+    "ftrans": {
+        "q0,0": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q0,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q3"
+        },
+        "q0,_": {
+            "write": "_",
+            "move": 1,
+            "newstate": "qa"
+        },
+        "q1,0": {
+            "write": "0",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q1,1": {
+            "write": "y",
+            "move": -1,
+            "newstate": "q2"
+        },
+        "q1,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q2,0": {
+            "write": "0",
+            "move": -1,
+            "newstate": "q2"
+        },
+        "q2,x": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q0"
+        },
+        "q2,y": {
+            "write": "y",
+            "move": -1,
+            "newstate": "q2"
+        },
+        "q3,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q3"
+        },
+        "q3,_": {
+            "write": "_",
+            "move": 1,
+            "newstate": "qa"
+        },
+        "q4,x": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q4"
+        },
+        "q5,0": {
+            "write": "0",
+            "move": -1,
+            "newstate": "q5"
+        },
+        "q5,_": {
+            "write": "_",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q5,x": {
+            "write": "x",
+            "move": -1,
+            "newstate": "q5"
+        }
+    },
+    "init": "q0",
+    "accept": "qa",
+    "reject": []
+}

@@ -1,0 +1,147 @@
+{
+    "estados": [
+        "q0",
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "qf",
+        "qv",
+        "q>=",
+        "q<"
+    ],
+    "alfa_in": [
+        "0",
+        "1"
+    ],
+    "alfa_fita": [
+        "_",
+        "0",
+        "1",
+        "x",
+        "y"
+    ],
+    "ftrans": {
+        "q0,1": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q0,0": {
+            "write": "0",
+            "move": 1,
+            "newstate": "q4"
+        },
+        "q1,1": {
+            "write": "1",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q1,0": {
+            "write": "0",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q2,1": {
+            "write": "y",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q2,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q2,_": {
+            "write": "_",
+            "move": -1,
+            "newstate": "qv"
+        },
+        "q3,y": {
+            "write": "y",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q3,0": {
+            "write": "0",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q3,1": {
+            "write": "1",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q3,x": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q0"
+        },
+        "q4,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q4"
+        },
+        "q4,1": {
+            "write": "1",
+            "move": -1,
+            "newstate": "qf"
+        },
+        "q4,_": {
+            "write": "_",
+            "move": -1,
+            "newstate": "qv"
+        },
+        "qf,0": {
+            "write": "0",
+            "move": -1,
+            "newstate": "qf"
+        },
+        "qf,y": {
+            "write": "_",
+            "move": -1,
+            "newstate": "qf"
+        },
+        "qf,x": {
+            "write": "_",
+            "move": -1,
+            "newstate": "qf"
+        },
+        "qf,_": {
+            "write": "_",
+            "move": 1,
+            "newstate": "q<"
+        },
+        "qv,y": {
+            "write": "_",
+            "move": -1,
+            "newstate": "qv"
+        },
+        "qv,x": {
+            "write": "_",
+            "move": -1,
+            "newstate": "qv"
+        },
+        "qv,0": {
+            "write": "0",
+            "move": -1,
+            "newstate": "qv"
+        },
+        "qv,1": {
+            "write": "1",
+            "move": -1,
+            "newstate": "qv"
+        },
+        "qv,_": {
+            "write": "_",
+            "move": 1,
+            "newstate": "q>="
+        }
+    },
+    "init": "q0",
+    "accept": [
+        "q>=",
+        "q<"
+    ],
+    "reject": []
+}

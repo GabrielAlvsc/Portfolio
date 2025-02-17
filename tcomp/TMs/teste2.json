@@ -1,0 +1,109 @@
+{
+    "estados": [
+        "q0",
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+    ],
+    "alfa_in": [
+        "a",
+        "b",
+        "c"
+    ],
+    "alfa_fita": [
+        "a",
+        "b",
+        "c",
+        "x",
+        "y",
+        "z",
+        "_"
+    ],
+    "ftrans": {
+        "q0,a": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q1,a": {
+            "write": "a",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q1,b": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q2,b": {
+            "write": "b",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q2,c": {
+            "write": "z",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q3,b": {
+            "write": "b",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q3,y": {
+            "write": "y",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q3,a": {
+            "write": "a",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q3,x": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q0"
+        },
+        "q1,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q2,z": {
+            "write": "z",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q3,z": {
+            "write": "z",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q0,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q4"
+        },
+        "q4,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q4"
+        },
+        "q4,z": {
+            "write": "z",
+            "move": 1,
+            "newstate": "q4"
+        },
+        "q4,_": {
+            "write": "_",
+            "move": 1,
+            "newstate": "q5"
+        }
+    },
+    "init": "q0",
+    "accept": "q5",
+    "reject": []
+}

@@ -1,0 +1,189 @@
+Sétupla de de entrada (Q,Ein,Efita,ft(),q0,qaceita,qrejeita): 
+{
+    "estados": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q7",
+        "q8",
+        "qa"
+    ],
+    "alfa_in": [
+        "0",
+        "1",
+        "#"
+    ],
+    "alfa_fita": [
+        "_",
+        "0",
+        "1",
+        "x",
+        "#"
+    ],
+    "ftrans": {
+        "q1,0": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q1,1": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q3"
+        },
+        "q1,#": {
+            "write": "#",
+            "move": 1,
+            "newstate": "q8"
+        },
+        "q2,0": {
+            "write": "0",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q2,1": {
+            "write": "1",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q2,#": {
+            "write": "#",
+            "move": 1,
+            "newstate": "q4"
+        },
+        "q3,0": {
+            "write": "0",
+            "move": 1,
+            "newstate": "q3"
+        },
+        "q3,1": {
+            "write": "1",
+            "move": 1,
+            "newstate": "q3"
+        },
+        "q3,#": {
+            "write": "#",
+            "move": 1,
+            "newstate": "q5"
+        },
+        "q4,0": {
+            "write": "x",
+            "move": -1,
+            "newstate": "q6"
+        },
+        "q4,x": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q4"
+        },
+        "q5,1": {
+            "write": "x",
+            "move": -1,
+            "newstate": "q6"
+        },
+        "q5,x": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q5"
+        },
+        "q6,0": {
+            "write": "0",
+            "move": -1,
+            "newstate": "q6"
+        },
+        "q6,1": {
+            "write": "1",
+            "move": -1,
+            "newstate": "q6"
+        },
+        "q6,x": {
+            "write": "x",
+            "move": -1,
+            "newstate": "q6"
+        },
+        "q6,#": {
+            "write": "#",
+            "move": -1,
+            "newstate": "q7"
+        },
+        "q7,0": {
+            "write": "0",
+            "move": -1,
+            "newstate": "q7"
+        },
+        "q7,1": {
+            "write": "1",
+            "move": -1,
+            "newstate": "q7"
+        },
+        "q7,x": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q8,x": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q8"
+        },
+        "q8,_": {
+            "write": "_",
+            "move": 1,
+            "newstate": "qa"
+        }
+    },
+    "init": "q1",
+    "accept": "qa",
+    "reject": []
+}
+Cadeia de entrada: 111#101
+
+fita inicial:
+ ['1', '1', '1', '#', '1', '0', '1', '_', '_', '_']
+
+t(q1,1) -> (q3,x,1)
+fita: ['x', '1', '1', '#', '1', '0', '1', '_', '_', '_'], cabeca: 1
+
+t(q3,1) -> (q3,1,1)
+fita: ['x', '1', '1', '#', '1', '0', '1', '_', '_', '_'], cabeca: 2
+
+t(q3,1) -> (q3,1,1)
+fita: ['x', '1', '1', '#', '1', '0', '1', '_', '_', '_'], cabeca: 3
+
+t(q3,#) -> (q5,#,1)
+fita: ['x', '1', '1', '#', '1', '0', '1', '_', '_', '_'], cabeca: 4
+
+t(q5,1) -> (q6,x,-1)
+fita: ['x', '1', '1', '#', 'x', '0', '1', '_', '_', '_'], cabeca: 3
+
+t(q6,#) -> (q7,#,-1)
+fita: ['x', '1', '1', '#', 'x', '0', '1', '_', '_', '_'], cabeca: 2
+
+t(q7,1) -> (q7,1,-1)
+fita: ['x', '1', '1', '#', 'x', '0', '1', '_', '_', '_'], cabeca: 1
+
+t(q7,1) -> (q7,1,-1)
+fita: ['x', '1', '1', '#', 'x', '0', '1', '_', '_', '_'], cabeca: 0
+
+t(q7,x) -> (q1,x,1)
+fita: ['x', '1', '1', '#', 'x', '0', '1', '_', '_', '_'], cabeca: 1
+
+t(q1,1) -> (q3,x,1)
+fita: ['x', 'x', '1', '#', 'x', '0', '1', '_', '_', '_'], cabeca: 2
+
+t(q3,1) -> (q3,1,1)
+fita: ['x', 'x', '1', '#', 'x', '0', '1', '_', '_', '_'], cabeca: 3
+
+t(q3,#) -> (q5,#,1)
+fita: ['x', 'x', '1', '#', 'x', '0', '1', '_', '_', '_'], cabeca: 4
+
+t(q5,x) -> (q5,x,1)
+fita: ['x', 'x', '1', '#', 'x', '0', '1', '_', '_', '_'], cabeca: 5
+
+A MT rejeita a cadeia 111#101: 
+
+fita final:
+ ['x', 'x', '1', '#', 'x', '0', '1', '_', '_', '_']
+

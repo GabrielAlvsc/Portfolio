@@ -1,0 +1,175 @@
+Sétupla de de entrada (Q,Ein,Efita,ft(),q0,qaceita,qrejeita): 
+{
+    "estados": [
+        "q0",
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6",
+        "q7"
+    ],
+    "alfa_in": [
+        "a",
+        "b",
+        "c"
+    ],
+    "alfa_fita": [
+        "a",
+        "b",
+        "c",
+        "x",
+        "y",
+        "_"
+    ],
+    "ftrans": {
+        "q0,a": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q1,a": {
+            "write": "a",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q1,b": {
+            "write": "b",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q1,c": {
+            "write": "c",
+            "move": 1,
+            "newstate": "q1"
+        },
+        "q1,B": {
+            "write": "B",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q1,x": {
+            "write": "x",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q1,y": {
+            "write": "y",
+            "move": -1,
+            "newstate": "q3"
+        },
+        "q3,a": {
+            "write": "x",
+            "move": -1,
+            "newstate": "q5"
+        },
+        "q0,b": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q2,a": {
+            "write": "a",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q2,b": {
+            "write": "b",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q2,c": {
+            "write": "c",
+            "move": 1,
+            "newstate": "q2"
+        },
+        "q2,B": {
+            "write": "B",
+            "move": -1,
+            "newstate": "q4"
+        },
+        "q2,x": {
+            "write": "x",
+            "move": -1,
+            "newstate": "q4"
+        },
+        "q2,y": {
+            "write": "y",
+            "move": -1,
+            "newstate": "q4"
+        },
+        "q4,b": {
+            "write": "y",
+            "move": -1,
+            "newstate": "q5"
+        },
+        "q0,c": {
+            "write": "c",
+            "move": 1,
+            "newstate": "q6"
+        },
+        "q6,x": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q6"
+        },
+        "q6,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q6"
+        },
+        "q6,B": {
+            "write": "B",
+            "move": -1,
+            "newstate": "q7"
+        },
+        "q5,a": {
+            "write": "a",
+            "move": -1,
+            "newstate": "q5"
+        },
+        "q5,b": {
+            "write": "b",
+            "move": -1,
+            "newstate": "q5"
+        },
+        "q5,c": {
+            "write": "c",
+            "move": -1,
+            "newstate": "q5"
+        },
+        "q5,x": {
+            "write": "x",
+            "move": 1,
+            "newstate": "q0"
+        },
+        "q5,y": {
+            "write": "y",
+            "move": 1,
+            "newstate": "q0"
+        }
+    },
+    "init": "q0",
+    "accept": "q7",
+    "reject": []
+}
+Cadeia de entrada: abc
+
+fita inicial:
+ ['a', 'b', 'c', '_', '_', '_']
+
+t(q0,a) -> (q1,x,1)
+fita: ['x', 'b', 'c', '_', '_', '_'], cabeca: 1
+
+t(q1,b) -> (q1,b,1)
+fita: ['x', 'b', 'c', '_', '_', '_'], cabeca: 2
+
+t(q1,c) -> (q1,c,1)
+fita: ['x', 'b', 'c', '_', '_', '_'], cabeca: 3
+
+A MT rejeita a cadeia abc: 
+
+fita final:
+ ['x', 'b', 'c', '_', '_', '_']
+
