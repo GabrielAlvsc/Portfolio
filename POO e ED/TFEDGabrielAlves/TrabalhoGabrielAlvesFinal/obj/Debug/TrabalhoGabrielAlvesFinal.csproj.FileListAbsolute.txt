@@ -1,0 +1,10 @@
+C:\Users\gabri\Desktop\ED\TFEDGabrielAlves\TrabalhoGabrielAlvesFinal\bin\Debug\TrabalhoGabrielAlvesFinal.exe.config
+C:\Users\gabri\Desktop\ED\TFEDGabrielAlves\TrabalhoGabrielAlvesFinal\bin\Debug\TrabalhoGabrielAlvesFinal.exe
+C:\Users\gabri\Desktop\ED\TFEDGabrielAlves\TrabalhoGabrielAlvesFinal\bin\Debug\TrabalhoGabrielAlvesFinal.pdb
+C:\Users\gabri\Desktop\ED\TFEDGabrielAlves\TrabalhoGabrielAlvesFinal\obj\Debug\TrabalhoGabrielAlvesFinal.csproj.AssemblyReference.cache
+C:\Users\gabri\Desktop\ED\TFEDGabrielAlves\TrabalhoGabrielAlvesFinal\obj\Debug\TrabalhoGabrielAlvesFinal.Form1.resources
+C:\Users\gabri\Desktop\ED\TFEDGabrielAlves\TrabalhoGabrielAlvesFinal\obj\Debug\TrabalhoGabrielAlvesFinal.Properties.Resources.resources
+C:\Users\gabri\Desktop\ED\TFEDGabrielAlves\TrabalhoGabrielAlvesFinal\obj\Debug\TrabalhoGabrielAlvesFinal.csproj.GenerateResource.cache
+C:\Users\gabri\Desktop\ED\TFEDGabrielAlves\TrabalhoGabrielAlvesFinal\obj\Debug\TrabalhoGabrielAlvesFinal.csproj.CoreCompileInputs.cache
+C:\Users\gabri\Desktop\ED\TFEDGabrielAlves\TrabalhoGabrielAlvesFinal\obj\Debug\TrabalhoGabrielAlvesFinal.exe
+C:\Users\gabri\Desktop\ED\TFEDGabrielAlves\TrabalhoGabrielAlvesFinal\obj\Debug\TrabalhoGabrielAlvesFinal.pdb
